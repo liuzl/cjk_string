@@ -34,8 +34,14 @@ namespace webcpp {
 		size_t find(const std::string str);
 		size_t find(const char* str);
 		size_t find(const cn_string& str);
+		void swap(cn_string& str);
+		cn_string& operator+=(const cn_string& str);
+		cn_string& operator-=(const cn_string& str);
 		friend std::ostream& operator<<(std::ostream& out, const cn_string& str);
 		friend std::istream& operator>>(std::istream& in, cn_string& str);
+		friend bool operator==(const cn_string& lStr, const cn_string& rStr);
+		friend const cn_string operator+(const cn_string& lStr, const cn_string& rStr);
+		friend const cn_string operator-(const cn_string& lStr, const cn_string& rStr);
 	private:
 		cn_string& replacePrintOrCntrl();
 		bool isPrintOrCntrl(char c);

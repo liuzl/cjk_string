@@ -159,6 +159,39 @@ namespace webcpp {
 		return in;
 	}
 
+	void cn_string::swap(cn_string& str) {
+		this->data.swap(str.data);
+	}
 
+	cn_string& cn_string::operator+=(const cn_string& str) {
+		return this->append(str);
+	}
+
+	cn_string& cn_string::operator-=(const cn_string& str) {
+		size_t p = this->find(str);
+		if (p != std::string::npos) {
+			return this->erase(p, str.size());
+		}
+		return *this;
+	}
+
+	bool operator==(const cn_string& lStr, const cn_string& rStr) {
+		return lStr.data == rStr.data;
+	}
+
+	const cn_string operator+(const cn_string& lStr, const cn_string& rStr) {
+		cn_string result;
+		result.data = lStr.data + rStr.data;
+		return result;
+	}
+
+	const cn_string operator-(const cn_string& lStr, const cn_string& rStr) {
+		cn_string result(lStr);
+		size_t p = result.find(rStr);
+		if (p != std::string::npos) {
+			return result.erase(p, rStr.size());
+		}
+		return result;
+	}
 
 }

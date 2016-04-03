@@ -29,7 +29,16 @@ int main(int argc, char** argv) {
 	} else {
 		std::cout << "Not Found" << std::endl;
 	}
-	
+
+	mixStr -= kStr;
+	mixStr -= jStr;
+	mixStr -= eStr;
+	mixStr.replace(p, oldStr.size(), newStr);
+	std::cout << (mixStr == cStr) << std::endl;
+	print(mixStr);
+	mixStr.swap(kStr);
+	print(mixStr);
+	print(kStr);
 	return 0;
 }
 
