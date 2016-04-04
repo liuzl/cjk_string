@@ -9,10 +9,10 @@ namespace webcpp {
 
 	class cn_string {
 	public:
-		cn_string();
-		cn_string(const cn_string& orig);
-		cn_string(const std::string& orig);
-		cn_string(const char* orig);
+		cn_string(size_t charset_t = cn_string::utf8_t);
+		cn_string(const cn_string& orig, size_t charset_t = cn_string::utf8_t);
+		cn_string(const std::string& orig, size_t charset_t = cn_string::utf8_t);
+		cn_string(const char* orig, size_t charset_t = cn_string::utf8_t);
 		cn_string& operator=(const cn_string& str);
 		cn_string& operator=(const std::string& str);
 		cn_string& operator=(const char* str);
@@ -26,9 +26,6 @@ namespace webcpp {
 		cn_string& append(const cn_string& str);
 		cn_string& insert(size_t p, const cn_string& str);
 		cn_string& erase(size_t p, size_t len);
-		void setUF8();
-		void setUTF16();
-		void setGBK();
 		void clear();
 		bool empty();
 		size_t find(const std::string str);
@@ -48,6 +45,7 @@ namespace webcpp {
 	private:
 		std::string data;
 		size_t charset_t;
+	public:
 		static const size_t gbk_t, utf8_t, utf16_t;
 	};
 

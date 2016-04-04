@@ -5,19 +5,19 @@ namespace webcpp {
 
 	const size_t cn_string::gbk_t = 2, cn_string::utf8_t = 3, cn_string::utf16_t = 4;
 
-	cn_string::cn_string() : data(""), charset_t(cn_string::utf8_t) {
+	cn_string::cn_string(size_t charset_t) : data(""), charset_t(charset_t) {
 
 	}
 
-	cn_string::cn_string(const cn_string& orig) : data(orig.data), charset_t(cn_string::utf8_t) {
+	cn_string::cn_string(const cn_string& orig, size_t charset_t) : data(orig.data), charset_t(charset_t) {
 
 	}
 
-	cn_string::cn_string(const std::string& orig) : data(orig), charset_t(cn_string::utf8_t) {
+	cn_string::cn_string(const std::string& orig, size_t charset_t) : data(orig), charset_t(charset_t) {
 		this->replacePrintOrCntrl();
 	}
 
-	cn_string::cn_string(const char* orig) : data(orig), charset_t(cn_string::utf8_t) {
+	cn_string::cn_string(const char* orig, size_t charset_t) : data(orig), charset_t(charset_t) {
 		this->replacePrintOrCntrl();
 
 	}
@@ -91,18 +91,6 @@ namespace webcpp {
 
 	bool cn_string::empty() {
 		return this->data.empty();
-	}
-
-	void cn_string::setGBK() {
-		this->charset_t = cn_string::gbk_t;
-	}
-
-	void cn_string::setUF8() {
-		this->charset_t = cn_string::utf8_t;
-	}
-
-	void cn_string::setUTF16() {
-		this->charset_t = cn_string::utf16_t;
 	}
 
 	size_t cn_string::find(const std::string str) {
